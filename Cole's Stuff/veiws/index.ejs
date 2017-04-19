@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Cole's Input Sender</title>
+	<style>
+		body {
+		    background: url('http://<%= host %>/bg.jpg');
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-attachment: fixed;
+		    -webkit-background-size: cover;
+		    -moz-background-size: cover;
+		    -o-background-size: cover;
+		    background-size: cover;
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="http://<%= host %>/jquery.min.js"></script>
+	<link href="http://<%= host %>/bootstrap.min.css" rel="stylesheet"/>
+	<script src="http://<%= host %>/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<form class="">
+					Sample ID:<br>
+					<input type="text" id="SampleId" class="data form-control">
+					<br>
+					Sapmle Date:<br>
+					<input type="text" id="SampleDate" class="data form-control">
+					<br>
+					Dry Weight [Sedimate + Bag(g)]:<br>
+					<input type="text" id="dryWeight" class="data form-control">
+					<br>
+					Clean Bag Mass:<br>
+					<input type="text" id="cleMass" class="data form-control">
+					<br>
+					Pre-Ashed Tin:<br>
+					<input type="text" id="PrAshedTin" class="data form-control">
+					<br>
+					Pre-Ashed Tin and Sedimate:<br>
+					<input type="text" id="tinAndSedNotAshed" class="data form-control">
+					<br>
+					Ashed Sedimate + Tin:<br>
+					<input type="text" id="tinAndSedAshed" class="data form-control">
+					<br>
+					<input onClick="main()" type="button" id="done" value="Done!" class="btn btn-default">
+				</form>
+			</div>
+		</div>
+		<script>
+		function createFormPost(formAsObject) //creates post request with JSON data
+		{
+			var postObj = new XMLHttpRequest();
+			var jsonToSend = JSON.stringify(formAsObject);
+			postObj.open("POST", "http://"+ "<%= host %>" + "/newData");
+			postObj.setRequestHeader("Content-Type", "application/json");
+			postObj.send(jsonToSend);
+		}
+		function FormObject() //creates object contaning form data
+		{
+			var targetEls = document.getElementsByClassName("data");
+			var objArr = [];
+			for (var i=0; i <= targetEls.length-2/2; i++)
+			{
+				var newObj =
+				{
+					DataType: targetEls[i].id,
+					DataValue: targetEls[i].value
+				};
+				objArr.push(newObj);
+			}
+			return objArr;
+		}
+		function main() //called by the done button found in the HTML above
+		{
+			var formObj = FormObject();
+			createFormPost(formObj);
+		}
+		</script>
+	</div>
+</body>

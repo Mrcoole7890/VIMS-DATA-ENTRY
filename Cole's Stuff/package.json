@@ -1,0 +1,14 @@
+{
+  "name": "Coles-Stuff",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "socket.io": "latest",
+    "express": "3.3.5",
+    "ejs": "*",
+    "body-parser":"*"
+  }
+}

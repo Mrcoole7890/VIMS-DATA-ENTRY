@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Cole's Input Sender</title>
+</head>
+<body>
+	<form action="/" method="get">
+		Dry Weight [Sedimate + Bag(g)]:<br>
+		<input type="text" name:"dryWeight">
+		<br>
+		Clean Bag Mass:<br>
+		<input type="text" name:"cleMass">
+		<br>
+		Pre-Ashed Tin:<br>
+		<input type="text" name:"PrAshedTin">
+		<br>
+		Pre-Ashed Tin and Sedimate:<br>
+		<input type="text" name:"tinAndSedNotAshed">
+		<br>
+		Ashed Sedimate + Tin:<br>
+		<input type="text" name:"tinAndSedAshed">
+		<br>
+		<input type="Submit" value="Done!">
+	</form>
+</body>
